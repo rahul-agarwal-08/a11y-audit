@@ -2,7 +2,7 @@
 
 **Your accessibility head start, right in Figma.**
 
-`a11y-audit` is a [Claude skill](https://support.claude.com/en/articles/12512180-use-skills-in-claude) that drafts Blueline accessibility annotations for a UI design. Give it a Figma frame link (or a screenshot) and it writes suggested accessible names, heading levels, landmarks and focus order into a new review page in the same file. Each check gets its own section, ready to review and carry into Stark.
+`a11y-audit` is a [AI skill](https://support.claude.com/en/articles/12512180-use-skills-in-claude) that drafts Blueline accessibility annotations for a UI design. Give it a Figma frame link (or a screenshot) and it writes suggested accessible names, heading levels, landmarks and focus order into a new review page in the same file. Each check gets its own section, ready to review and carry into Stark.
 
 ![a11y-audit drawing callouts onto a screen, then spotlighting the suggested accessible name "Send"](media/demo.gif)
 
