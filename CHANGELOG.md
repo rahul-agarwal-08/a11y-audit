@@ -4,6 +4,8 @@
 
 First public release.
 
+- Repo layout follows the open Agent Skills convention (`skills/a11y-audit/`), so the `skills` CLI and GitHub Copilot can install it.
+- Works with GitHub Copilot via `npx skills add rahul-agarwal-08/a11y-audit -a github-copilot -g -y` (untested on Copilot so far).
 - Choose what to run: one check at a time, specific checks, or everything.
 - One Figma Section per check (Accessible names, Headings, Landmarks, Focus order, Color & contrast, Touch targets, Text & links, Forms & errors, For dev & QA) under a "Start here" overview. No pass/fail score.
 - Suggestion-first cards (suggestion → why it helps → details) and a voice guide with no failure language.

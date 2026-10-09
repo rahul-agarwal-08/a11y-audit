@@ -2,7 +2,7 @@
 
 **Your accessibility head start, right in Figma.**
 
-`a11y-audit` is a [AI skill](https://support.claude.com/en/articles/12512180-use-skills-in-claude) that drafts Blueline accessibility annotations for a UI design. Give it a Figma frame link (or a screenshot) and it writes suggested accessible names, heading levels, landmarks and focus order into a new review page in the same file. Each check gets its own section, ready to review and carry into Stark.
+`a11y-audit` is a [Claude skill](https://support.claude.com/en/articles/12512180-use-skills-in-claude) that drafts Blueline accessibility annotations for a UI design. Give it a Figma frame link (or a screenshot) and it writes suggested accessible names, heading levels, landmarks and focus order into a new review page in the same file. Each check gets its own section, ready to review and carry into Stark.
 
 ![a11y-audit drawing callouts onto a screen, then spotlighting the suggested accessible name "Send"](media/demo.gif)
 
@@ -29,7 +29,7 @@
 
 ## Requirements
 
-- **Claude** with skills and code execution enabled.
+- **Claude** (skills and code execution enabled) or **GitHub Copilot** (agent mode / Copilot CLI) with Agent Skills support.
 - **The Figma connector (MCP)** with write access, plus Figma's companion skills `figma-use` and `figma-design-to-code`, which the skill loads before Figma calls. The Figma file should be open in the Figma desktop app while the skill runs.
 
 ## Install
@@ -46,8 +46,25 @@ Copy the skill folder into your skills directory:
 
 ```bash
 git clone https://github.com/rahul-agarwal-08/a11y-audit.git
-mkdir -p ~/.claude/skills && cp -r a11y-audit/a11y-audit ~/.claude/skills/
+mkdir -p ~/.claude/skills && cp -r a11y-audit/skills/a11y-audit ~/.claude/skills/
 ```
+
+### GitHub Copilot (VS Code, Copilot CLI)
+
+Copilot supports the open Agent Skills format, so the same skill folder works. One command, using the open-source [`skills` CLI](https://github.com/vercel-labs/skills) (needs Node):
+
+```bash
+npx skills add rahul-agarwal-08/a11y-audit -a github-copilot -g -y
+```
+
+`-g` installs it for all your projects (`~/.copilot/skills/`); drop it to install into the current project's `.github/skills/` instead. Prefer no extra tooling? Copy it manually:
+
+```bash
+git clone https://github.com/rahul-agarwal-08/a11y-audit.git
+mkdir -p ~/.copilot/skills && cp -r a11y-audit/skills/a11y-audit ~/.copilot/skills/
+```
+
+Copilot also needs the Figma MCP server connected. Copilot support is new and not yet widely tested, so please open an issue if something doesn't work.
 
 ## Use it
 
@@ -64,7 +81,7 @@ The skill asks how you'd like to run it, then builds one section per check on a 
 ## Repository layout
 
 ```text
-a11y-audit/                 the skill (this folder is what Claude loads)
+skills/a11y-audit/          the skill (this folder is what Claude / Copilot loads)
 ├── SKILL.md                workflow: choose checks → inventory → suggestions → Figma sections
 └── references/
     ├── adobe_checklist.md      checklist items, WCAG SC, JIRA tags, check groups
